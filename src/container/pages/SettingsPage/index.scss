@@ -1,0 +1,15 @@
+.settings--wrapper {
+  .page-content {
+    display: flex;
+    flex-flow: wrap;
+    justify-content: space-between;
+    margin: 20px auto 0;
+    height: calc(100vh - 130px);
+
+    &.account {
+      .sub-sidebar-content {
+        max-height: 380px;
+      }
+    }
+  }
+}

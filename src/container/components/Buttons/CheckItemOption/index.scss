@@ -1,0 +1,42 @@
+.check-item--option {
+  position: relative;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 700;
+  color: #373f41;
+  line-height: 40px;
+  padding: 0 25px;
+  background-color: #fff;
+  box-shadow: 0 0.125em 0.25em 2px rgba(10, 10, 10, 0.1);
+  border-radius: 10px;
+  border-style: inherit;
+  margin-top: 10px;
+  
+  &:not(:last-child) {
+    margin-right: 20px;
+  }
+
+  &:focus { outline: none; }
+
+  &.is-checked {
+    background-color: #e4f2fe;
+    color: #2196F3;
+  }
+
+  &.btn-add {
+    color: #2196F3;
+    border: 1px solid #2196F3;
+  }
+
+  .checkmark {
+    display: inline-block;
+    line-height: 0;
+    position: absolute;
+    right: 4px;
+    top: 4px;
+
+    svg {
+      fill: #2196F3;
+    }
+  }
+}

@@ -1,0 +1,55 @@
+// [Global custom variants]
+$sidebarWidth: 280px;
+
+body {
+  background-color: #F5F6F8 !important;
+  color: #373F41;
+}
+.section {
+  height: 100vh;
+  padding: 0;
+}
+
+.is--full {
+  max-width: 100%;
+  width: 100%;
+}
+
+
+
+.column-sidebar {
+  max-width: $sidebarWidth;
+  width: 100%;
+  background-color: #fff;
+
+  &.sidebar-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    z-index: 999;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: left;
+    -webkit-transition: .3s all ease;
+    transition: .3s all ease;
+  }
+}
+
+.page-content--wrapper {
+  padding: 20px;
+}
+
+.content--wrapper {
+  padding-left: $sidebarWidth;
+  -webkit-transition: 0.3s all ease;
+  transition: 0.3s all ease;
+}

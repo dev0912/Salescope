@@ -1,0 +1,121 @@
+.modal-preset-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 15px;
+  overflow: hidden;
+  -ms-overflow-y: visible;
+
+  .m-head, .m-foot {
+    align-items: center;
+    background-color: #fff;
+    display: flex;
+    flex-shrink: 0;
+    justify-content: flex-start;
+    padding: 25px;
+    position: relative;
+  }
+
+  .m-head {
+    border-bottom: 1px solid #EBEFF2;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+
+    @media screen and (max-width: 768px) {
+      padding: 25px 25px 15px 25px;
+    }
+  }
+
+  .m-title {
+    flex-grow: 1;
+    flex-shrink: 0;
+
+    .card-header {
+      padding: 0;
+    }
+  }
+
+  button.delete {
+    background-color: #fff;
+    padding: 0;
+    max-height: initial;
+    max-width: initial;
+    min-height: initial;
+    min-width: initial;
+    height: 32px;
+    width: 32px;
+
+    &:before, &:after {
+      background-color: #C2CFE0;
+    }
+
+    &:before {
+      width: 70%;
+    }
+
+    &:after {
+      height: 70%;
+    }
+  }
+
+  .m-body {
+    -webkit-overflow-scrolling: touch;
+    background-color: #fff;
+    flex-grow: 1;
+    flex-shrink: 1;
+    overflow: auto;
+    padding: 25px;
+
+    .m-option--wrapper {
+      & + .m-option--wrapper {
+        margin-top: 25px;
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      padding: 10px 25px;
+
+      .m-option--wrapper {
+        & + .m-option--wrapper {
+          margin-top: 10px;
+        }
+      }
+    }
+  }
+
+  .m-foot {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+
+    @media screen and (max-width: 768px) {
+      padding: 15px 25px 25px 25px;
+    }
+  }
+
+  .btn-create-preset {
+    background-color: #2196F3;
+    color: #fff;
+    border-radius: 7px;
+    border: 0;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 48px;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
+    padding: 0;
+    height: auto;
+    width: 100%;
+  }
+
+  @media screen and (min-width: 769px) {
+    margin: 0 auto;
+    max-height: calc(100vh - 40px);
+    width: 435px;
+  }
+
+  @media screen and (max-width: 768px) {
+    margin: 0 auto;
+    max-height: calc(100vh - 40px);
+    width: 335px;
+  }
+}

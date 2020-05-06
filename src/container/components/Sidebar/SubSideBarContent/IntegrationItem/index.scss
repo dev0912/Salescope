@@ -1,0 +1,85 @@
+.integration--item {
+  max-width: 33.33333%;
+  width: 100%;
+  padding: 0 12px;
+  margin: 12px 0;
+}
+
+.integration--item-inner {
+  box-shadow: 0 0.125em 0.25em 2px rgba(10, 10, 10, 0.1);
+  border-radius: 10px;
+  padding: 25px 15px 15px;
+
+ .brand-icon {
+  text-align: center;
+  height: 77px;
+
+    &.salseforce {
+      svg {
+        path {
+          fill: #fff;
+   
+          &:first-child {
+           fill: #109CF1;
+          }
+        }
+      }   
+    }
+
+    &.wordpress {
+      svg {
+        path {
+          fill: #303030;
+          fill-rule: evenodd;
+          clip-rule: evenodd;
+        }
+      }
+    }
+ }   
+}
+
+.integration-content {
+  margin-top: 30px;
+
+  h3 {
+    font-size: 16px;
+    line-height: 18px;
+    color: #192A3E;
+    font-weight: bold;
+  }
+
+  .description {
+    margin: 5px auto 15px;
+
+    p {
+      height: 55px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 12px;
+      line-height: 18px;
+      color: #C2CFE0;
+    }
+  }
+
+  .btn-connection {
+    position: relative;
+    display: inline-block;
+    color: #C2CFE0;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 0;
+    background-color: #fff;
+    box-shadow: none;
+    border-style: inherit;
+
+    &.is-reconnect {
+      color: #109CF1;
+    }
+
+    &:focus { outline: none; }
+
+    &:hover {
+      color: #109CF1;
+    }
+  }
+}

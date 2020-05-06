@@ -1,0 +1,149 @@
+.collapsed {
+  .content--wrapper { padding-left: 70px; }
+  .sidebar-wrapper { max-width: 70px; }
+
+  .logo-wrapper {
+    .logo-actived--user {
+      .user-infos { display: none; opacity: 0;}
+    }
+  }
+
+  .menu-title { 
+    display: none; 
+    opacity: 0;
+    width: 0;
+  }
+
+  .btn-toggle-wrapper {
+    
+    .collapse-button .icon-wrapper {
+
+      svg path { fill: #2196F3; }
+    } 
+    .btn-title {
+      display: none; 
+      opacity: 0;
+      width: 0;
+    }
+  }
+}
+
+.ss-sidebar {
+  height: 100%;
+}
+
+.menu-list--wrapper {
+  flex-grow: 1;
+  flex-shrink: 1;
+  overflow: auto;
+  height: calc(100% - 242px);
+
+  .ss-menu--list {
+    a {
+      color: #334D6E;
+      padding: 10px 0;
+      font-size: 13px;
+      line-height: 20px;
+
+      &:nth-child(2) {
+        border-bottom: 1px solid #EBEFF2;
+        margin-bottom: 10px;
+      }
+
+      &.is-active {
+        color: #109CF1;
+        background-color: transparent;
+
+        svg path {
+          stroke: #109CF1;
+        }
+      }
+
+      &:hover {
+        color: #109CF1;
+        background-color: transparent;
+
+        svg path {
+          stroke: #109CF1;
+        }
+      }
+
+      svg {
+        path {
+          stroke: #C2CFE0;
+          stroke-width: 1.4;
+        }
+      }
+
+      .ss-menu--list--inner {
+        display: flex;
+        justify-content: space-between;
+        width: calc(100% - 58px);
+        min-width: 20px;
+        margin: 0 auto;
+      }
+
+      .menu-title { 
+        width: calc(100% - 35px);
+        max-height: 20px;
+        overflow: hidden;
+        -webkit-transition: 0.8s width ease;
+        transition: 0.8s width ease;
+      }
+    }
+  }
+}
+
+.btn-toggle-wrapper {
+  display: flex;
+  flex-shrink: 0;
+  padding: 10px 0 25px;
+}
+
+.collapse-button {
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  color: #90A0B7;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  overflow: hidden;
+  max-height: 18px;
+  justify-content: space-between;
+  width: calc(100% - 58px);
+  min-width: 20px;
+  margin: 0 auto;
+
+  &:hover {
+    color: #109CF1;
+
+    .icon-wrapper svg path {
+      fill: #109CF1;
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  .icon-wrapper {
+    line-height: 0;
+
+    svg {
+      path {
+        fill-rule: evenodd;
+        clip-rule: evenodd;
+        fill: #C2CFE0;
+      }
+    }
+  }
+
+  .btn-title {
+    width: calc(100% - 35px);
+    max-height: 16px;
+    overflow: hidden;
+    transition: 0.8s width ease;
+    text-align: left;
+  }
+}

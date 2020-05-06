@@ -1,0 +1,30 @@
+.m-option--wrapper {
+  .select-wrapper {
+    position: relative;
+    padding: 5px 0;
+    border-bottom: 1px solid #D3D8DD;
+
+    select {
+      font-size: 15px;
+      font-weight: bold;
+      line-height: 25px;
+      color: #323C47;
+      width: 100%;
+      -webkit-appearance: none;
+      border: 0;
+      
+      &:focus { outline: none; }
+    }
+
+    svg {
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 0;
+      fill: #AEAEAE;
+
+      path:last-child { fill: none; }
+    }
+  }
+}

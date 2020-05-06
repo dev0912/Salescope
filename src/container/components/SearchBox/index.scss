@@ -1,0 +1,37 @@
+.ss-search {
+  &.control {
+    input {
+      padding: 5px 60px 5px 30px;
+      font-size: 20px;
+      font-weight: bold;
+      color: #111C60;
+      height: 50px;
+
+      &:hover, &:focus {
+        border-color: transparent;
+        box-shadow: none;
+      }
+
+      &::placeholder {
+        color: #192A3E;
+      }
+
+      &:-ms-input-placeholder {
+        color: #192A3E;
+      }
+
+      &::-ms-input-placeholder {
+        color: #192A3E;
+      }
+    }
+  }
+}
+.icon-search-wrapper {
+  position: absolute;
+  right: 0;
+  height: 100%;
+  width: 60px;
+  align-items: center;
+  display: inline-flex;
+  cursor: pointer;
+}

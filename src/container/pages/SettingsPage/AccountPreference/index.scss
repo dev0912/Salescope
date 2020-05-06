@@ -1,0 +1,92 @@
+.account-preference--wrapper {
+  padding: 15px 0;
+
+  .account-preference--inner {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+  }
+
+  .user-avatar {
+    position: relative;
+
+    .avatar-img {
+      display: inline-block;
+      width: 105px;
+      height: 105px;
+      border-radius: 50%;
+      background-color: #303030;
+    }
+
+    .btn-avata-edit {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background-color: #fff;
+      border-radius: 50%;
+      position: absolute;
+      right: 0;
+      bottom: 5px;
+      cursor: pointer;
+      
+      svg {
+        path {
+          fill: #334D6E;
+        }
+      }
+    }
+  }
+
+  .user-infos {
+    padding-left: 25px;
+
+    .user-name {
+      font-size: 30px;
+      color: #192a3e;
+      line-height: 30px;
+      font-weight: bold;
+    }
+
+    .user-email {
+      font-size: 24px;
+      color: #90a0b7;
+    }
+  }
+
+  .account-btn--wrapper {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 55px;
+
+    .account-btn--inner{
+      display: inline-flex;
+      flex-wrap: wrap;
+      flex-flow: column;
+    }
+
+    .btn-account {
+      color: #fff;
+      border-radius: 5px;
+      border: 0;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 42px;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      padding: 0 20px;
+      height: auto;
+      cursor: pointer;
+
+      &.account-logout {
+        background-color: #2196F3;
+      }
+
+      &.account-delete {
+        background-color: #C2CFE0;
+        margin-top: 15px;
+      }
+    }
+  }
+}

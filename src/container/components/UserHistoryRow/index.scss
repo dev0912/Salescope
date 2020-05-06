@@ -1,0 +1,32 @@
+.cell-wrapper {
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+  color: #707683;
+  font-size: 13px;
+
+  .card-header .title h3 {
+    font-size: 13px;
+  }
+  
+
+  &.list-style {
+    color: #F11097;
+    padding-left: 15px;
+    position: relative;
+
+    &:before {
+      position: absolute;
+      content: '';
+      left: 0;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: #F11097;
+    }
+  }
+
+  .card-header {
+    padding: 0;
+  }
+}

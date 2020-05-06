@@ -1,0 +1,44 @@
+.preset-item--wrapper {
+  display: inline-flex;
+  flex-wrap: wrap;
+  flex-flow: row;
+  align-items: center;
+  margin-bottom: 30px;
+
+  &:not(:last-child) {
+    margin-right: 50px;
+  }
+
+  .item-title {
+    background-color: #E4F2FE;
+    color: #109CF1;
+    border-radius: 4px;
+
+    span {
+      display: inline-block;
+      line-height: 28px;
+      font-size: 14px;
+      padding: 0 20px;
+      max-width: 90px;
+    }
+  }
+
+  .icon-wrapper {
+    display: flex;
+    cursor: pointer;
+    margin-left: 12px;
+
+    &:hover {
+      svg {
+        fill: #109CF1;
+      }  
+    }
+
+    svg {
+      fill: #C2CFE0;
+      path {
+
+      }
+    }
+  }
+}

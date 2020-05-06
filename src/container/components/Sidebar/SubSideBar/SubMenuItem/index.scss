@@ -1,0 +1,62 @@
+.sub-menu-item--wrapper {
+  padding: 15px;
+
+  & + .sub-menu-item--wrapper {
+    border-top: 1px solid #EBEFF2;
+  }
+
+  &.is-active {
+    .icon--wrapper svg {
+      fill: #109CF1;
+      
+      &.Account {
+        svg {
+          path:nth-child(2) {
+            stroke: #fff;
+            stroke-width: 1.5
+          }
+        }
+      }
+    }
+
+    .sub-menu-item--info h3 { color: #109CF1; }
+  }
+
+  a {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .icon--wrapper {
+
+    &.Account {
+      svg {
+        path:nth-child(2) {
+          stroke: #fff;
+          stroke-width: 1.5
+        }
+      }
+    }
+
+    svg {
+      fill: #C2CFE0;
+    }
+  }
+
+  .sub-menu-item--info {
+    padding-left: 10px;
+
+    h3 {
+      font-size: 13px;
+      line-height: 20px;
+      font-weight: bold;
+      color: #192A3E;
+    }
+
+    .addtional-title {
+      font-size: 12px;
+      line-height: 16px;
+      color: #90A0B7;
+    }
+  }
+}

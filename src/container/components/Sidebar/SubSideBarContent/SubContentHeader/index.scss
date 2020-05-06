@@ -1,0 +1,74 @@
+.subcontent-header--wrapper {
+  padding: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .subcontent-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  .header--logo {
+    transform: scale(1.2);
+    height: 24px;
+
+    &.Account {
+      svg {
+        fill: #109CF1;
+
+        path:nth-child(2) {
+          stroke: #fff;
+          stroke-width: 1.5
+        }
+      }
+    }
+
+    svg {
+      fill: #109CF1;
+    }
+
+  }
+
+  h3 {
+    font-size: 18px;
+    line-height: 20px;
+    color: #192A3E;
+    font-weight: bold;
+    padding-left: 15px;
+  }
+
+  .btn-create-new {
+    border-bottom: 1px solid #fff;
+    &:hover {
+      border-bottom: 1px solid #2196F3;
+    }
+
+    button {
+      position: relative;
+      color: #2196F3;
+      background-color: #fff;
+      box-shadow: none;
+      border: 0;
+      font-size: 13px;
+      font-weight: bold;
+      padding: 0 20px 0 0;
+      line-height: 20px;
+      cursor: pointer;
+
+      &:focus {
+        outline: none;
+      }
+
+      &:after {
+        position: absolute;
+        content: '\002B';
+        font-size: 24px;
+        font-weight: bold;
+        right: 0;
+        line-height: 17px;
+      }
+    }
+  }
+}

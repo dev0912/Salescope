@@ -1,0 +1,36 @@
+.sub-sidebar-content {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0.5em 1em -0.125em rgba(10, 10, 10, 0.1), 0 0px 0 1px rgba(10, 10, 10, 0.02);
+  position: relative;
+  background-color: white;
+  color: #373F41;
+  max-width: calc(100% - 300px);
+  width: 100%;
+}
+
+.sub-sidebar-body--content {
+  padding: 0 24px;
+  border-top: 1px solid #EBEFF2;
+
+  .integrations-wrapper {
+    width: 100%;
+  }
+
+  .heading-title {
+    margin: 20px auto 0;
+
+    h4 {
+      color: #90A0B7;
+      font-size: 14px;
+      line-height: 1;
+    }
+  }
+  .integration-items {
+    margin: 0 -12px;
+    padding-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+}
