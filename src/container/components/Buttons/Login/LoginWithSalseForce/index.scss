@@ -1,0 +1,41 @@
+.btn-sf-login--wrapper {
+  margin-top: 50px;
+
+  button {
+    display: flex;
+    justify-content: space-around;
+    line-height: 72px;
+    padding: 0 15px;
+    font-size: 22px;
+    font-weight: 600;
+    text-transform: uppercase;
+    background-color: #2196F3;
+    color: #fff;
+    width: 100%;
+    height: initial;
+    border-radius: 10px;
+    border: 0;
+
+    &:hover, &:focus:not(:active) {
+      color: #fff;
+      box-shadow:none;
+    }
+
+    span {
+      width: 50px;
+      display: inline-block;
+      line-height: 0;
+      margin-right: 20px;
+
+      &:after {
+        position: absolute;
+        content: '';
+        height: 100%;
+        border-right: 1px solid #3c83bb;
+        top: 0;
+      }
+
+      img { margin-right: 15px; }
+    }
+  }
+}

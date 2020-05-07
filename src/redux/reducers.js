@@ -1,14 +1,14 @@
 import {
     combineReducers
-} from 'redux';
+} from 'redux'
 
 import {
     routerReducer
-} from 'react-router-redux';
+} from 'react-router-redux'
 
-import tab from './reducers/tab';
+import auth from './reducers/auth'
 
 export default combineReducers({
     routing: routerReducer,
-    tab
+    auth
 })

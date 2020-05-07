@@ -1,0 +1,24 @@
+.login-salseforce--wrapper {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+}
+
+.login-salseforce--inner {
+  background-color: #fff;
+  max-width: 650px;
+  width: 100%;
+  padding: 65px 125px;
+  border-radius: 5px;
+
+  .logo-img {
+    max-width: 175px;
+    width: 100%;
+    margin: 0 auto;
+
+    img {
+
+    }
+  }
+}

@@ -79,6 +79,6 @@ const ScopePage = () => (
 		
 			<SubmitToApi title="SUBMIT TO SALSEFORCE" />
 	</div>
-);
+)
 
 export default ScopePage

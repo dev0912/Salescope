@@ -7,9 +7,15 @@ import SettingsPage from '../container/pages/SettingsPage'
 import PresetsContainer from '../container/pages/SettingsPage/PresetsContainer'
 import IntegrationsContainer from '../container/pages/SettingsPage/IntegrationsContainer'
 import AccountContainer from '../container/pages/SettingsPage/AccountContainer'
+import LoginInWithSalseForcePage from '../container/pages/LoginInWithSalseForcePage'
+
+let oAuth = false
 
 const Routes = () => (
     <BrowserRouter>
+        { !oAuth ? (
+          <LoginInWithSalseForcePage />
+        ) : (
         <Container>
             <Switch>
                 <Route exact path="/" component={ScopePage} />
@@ -21,6 +27,7 @@ const Routes = () => (
                 </SettingsPage>
             </Switch>
         </Container>
+        ) }
     </BrowserRouter>
 )
 
