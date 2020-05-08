@@ -6,9 +6,11 @@ const API_URL = 'https://na134.salesforce.com/services/oauth2';
 
 function headers(useToken) {
   let options = {
-    // 'Content-Type': 'application/x-www-form-urlencoded',
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*'
+    'Content-Type': 'application/x-www-form-urlencoded',
+    // 'Content-Type': 'text/plain',
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
+
   };
 
   if(useToken) {
