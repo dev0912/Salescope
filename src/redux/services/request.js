@@ -1,6 +1,7 @@
 import axios from 'axios';
 import cookie from 'react-cookies';
-const API_URL = 'https://login.salesforce.com/services/oauth2';
+// const API_URL = 'https://login.salesforce.com/services/oauth2';
+const API_URL = 'https://na134.salesforce.com/services/oauth2/token';
 
 function headers(useToken) {
   let options = {
