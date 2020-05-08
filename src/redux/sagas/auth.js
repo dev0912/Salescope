@@ -6,7 +6,7 @@ import {
 import * as API from '../services/api';
 import actionTypes from '../actionTypes';
 
-export function* login({ params }) {
+export function* login(params) {
   console.log('PARAMS: ', params);
   try {
     const result = yield call(API.login, params);

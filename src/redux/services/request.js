@@ -2,10 +2,12 @@ import axios from 'axios';
 import cookie from 'react-cookies';
 // const API_URL = 'https://login.salesforce.com/services/oauth2';
 const API_URL = 'https://na134.salesforce.com/services/oauth2';
+// const API_URL = 'https://cosynd-api.herokuapp.com/api/v1/login';
 
 function headers(useToken) {
   let options = {
-    'content-type': 'application/x-www-form-urlencoded',
+    // 'Content-Type': 'application/x-www-form-urlencoded',
+    'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*'
   };
 
@@ -38,7 +40,6 @@ export function get(url, useToken = true) {
 }
 
 export function post(url, data, useToken = true) {
-  console.log('********** post url:', url)
   return axios({
     method: 'POST',
     url: API_URL + url,
