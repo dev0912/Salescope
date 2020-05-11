@@ -27,7 +27,7 @@ const MenuItem = ({ path, icon, title }, index) => {
 }
 
 const menuItems = [
-  { path: ['/'], icon: <IconScope/>, title: 'Scope Page' },
+  { path: ['/scope'], icon: <IconScope/>, title: 'Scope Page' },
   { path: ['/call-history'], icon: <IconHistory/>, title: 'Call History Page' },
   { path: ['/settings/presets', '/settings/integrations', '/settings/account'], icon: <IconSettings/>, title: 'Settings Page'},
 ]

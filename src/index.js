@@ -7,6 +7,7 @@ import configureStore from './redux/store'
 import './index.css';
 import * as serviceWorker from './serviceWorker'
 import Routes from './routes'
+
 const store = configureStore()
 
 ReactDOM.render(

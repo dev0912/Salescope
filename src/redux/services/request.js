@@ -1,22 +1,20 @@
 import axios from 'axios';
 import cookie from 'react-cookies';
-// const API_URL = 'https://login.salesforce.com/services/oauth2';
-const API_URL = 'https://na134.salesforce.com/services/oauth2';
-// const API_URL = 'https://cosynd-api.herokuapp.com/api/v1/login';
+
+const API_URL = 'https://na134.salesforce.com/services/data/v20.0';
+const ACCESS_TOKEN_KEY = 'access_token'
 
 function headers(useToken) {
   let options = {
     'Content-Type': 'application/x-www-form-urlencoded',
-    // 'Content-Type': 'text/plain',
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'POST, GET, OPTIONS',
-
   };
 
-  if(useToken) {
-    const token = cookie.load('token');
+  if (useToken) {
+    const token = cookie.load(ACCESS_TOKEN_KEY);
     options = { 
-      'Authorization': 'Bearer ' + token 
+      Authorization: 'Bearer ' + token 
     };
   }
 
@@ -95,4 +93,13 @@ export function del(url, useToken = true) {
       return null;
     }
   });
+}
+
+export async function resolveAccessToken() {
+  try {
+    const { data } = await axios.get('/access_token')
+    cookie.save(ACCESS_TOKEN_KEY, data.access_token)
+  } catch (error) {
+    console.warn(error)
+  }
 }

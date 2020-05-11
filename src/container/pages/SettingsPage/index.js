@@ -10,11 +10,24 @@ import SubMenuItem from '../../components/Sidebar/SubSideBar/SubMenuItem'
 import IconPresets from '../../components/Icons/IconPresets'
 import IconIntegrations from '../../components/Icons/IconIntegrations'
 import IconAccount from '../../components/Icons/IconAccount'
+import * as request from '../../../redux/services/request'
 
 import './index.scss'
 
 const SettingsPage = (props) => {
 	const page_query = props.location.pathname.split('/').pop();
+	const [status, setStatus] = React.useState(null);
+
+	React.useEffect(() => {
+		request.get('/sobjects/Lead')
+			.then((response) => {
+				console.log(response.data)
+				setStatus(response.data)
+			})
+			.catch(err => {
+				console.log(err)
+			})
+	})
 
 	return (
 		<div className="settings--wrapper">
@@ -24,6 +37,7 @@ const SettingsPage = (props) => {
 
 			<div className={classNames("page-content", page_query)}>
 				<SubSideBar>
+					<h1>{status}</h1>
 					<SubMenuItem icon={ <IconPresets /> }
 						path="/settings/presets" title="Presets" subtitle="Add or remove presets" active={page_query === 'presets'}
 					/>

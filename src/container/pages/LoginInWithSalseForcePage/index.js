@@ -17,7 +17,7 @@ const LoginInWithSalseForcePage = ({ login }) => {
       password: 'Cloudadv2020$'
     }
 
-    login(params);    
+    login(params);
   }
 
   return (
