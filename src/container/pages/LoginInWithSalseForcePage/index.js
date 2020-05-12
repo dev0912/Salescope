@@ -18,7 +18,7 @@ const LoginInWithSalseForcePage = ({ login }) => {
     // }
 
     // login(params);
-    window.location = 'https://localhost:8080/auth/login';
+    window.location = 'https://react-salescope.herokuapp.com/auth/login';
   }
 
   return (
