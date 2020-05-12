@@ -134,7 +134,7 @@ app.get('/auth/callback', function(request, response) {
 		};
 		// Redirect to app main page
 		// return response.redirect('/index.html');
-		return response.redirect('https://react-salescope.herokuapp.com:3000/scope');
+		return response.redirect('https://react-salescope.herokuapp.com/scope');
 	});
 });
 
