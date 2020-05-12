@@ -134,7 +134,7 @@ app.get('/auth/callback', function(request, response) {
 		};
 		// Redirect to app main page
 		// return response.redirect('/index.html');
-		return response.redirect('http://localhost:3000/scope');
+		return response.redirect('https://react-salescope.herokuapp.com:3000/scope');
 	});
 });
 
@@ -211,5 +211,5 @@ app.get('/query', function(request, response) {
 });
 
 app.listen(app.get('port'), function() {
-	console.log('Server started: http://localhost:' + app.get('port') + '/');
+	console.log('Server started: https://react-salescope.herokuapp.com:' + app.get('port') + '/');
 });
