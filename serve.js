@@ -211,5 +211,5 @@ app.get('/query', function(request, response) {
 });
 
 app.listen(app.get('port'), function() {
-	console.log('Server started: https://react-salescope.herokuapp.com:' + app.get('port') + '/');
+	// console.log('Server started: https://react-salescope.herokuapp.com:' + app.get('port') + '/');
 });
