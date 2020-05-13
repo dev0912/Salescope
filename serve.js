@@ -51,6 +51,9 @@ const path = require('path'),
 	session = require('express-session'),
 	jsforce = require('jsforce');
 
+const axios = require('axios');
+const bodyParser = require('body-parser');
+
 // Instantiate Salesforce client with .env configuration
 const oauth2 = new jsforce.OAuth2({
 	loginUrl: process.env.domain,
@@ -77,6 +80,22 @@ app.use(
 // Serve HTML pages under root directory
 app.use('/', express.static(path.join(__dirname, '../public')));
 
+app.use( ( req, res, next ) => {
+  res.header( 'Access-Control-Allow-Origin', '*' );
+  res.header( 'Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT' );
+  res.header( 'Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization' );
+  next();
+  } );
+
+
+app.use(
+bodyParser.urlencoded({
+	extended: true
+})
+)
+
+app.use(bodyParser.json())
+
 /**
  *  Attemps to retrieves the server session.
  *  If there is no session, redirects with HTTP 401 and an error message
@@ -92,8 +111,8 @@ function getSession(request, response) {
 
 function resumeSalesforceConnection(session) {
 	return new jsforce.Connection({
-		instanceUrl: session.sfdcAuth.instanceUrl,
-		accessToken: session.sfdcAuth.accessToken,
+		instanceUrl: session.instanceUrl,
+		accessToken: session.accessToken,
 		version: process.env.apiVersion
 	});
 }
@@ -132,9 +151,16 @@ app.get('/auth/callback', function(request, response) {
 			instanceUrl: conn.instanceUrl,
 			accessToken: conn.accessToken
 		};
-		// Redirect to app main page
-		// return response.redirect('/index.html');
-		return response.redirect('https://react-salescope.herokuapp.com/scope');
+
+		const session = {
+			instanceUrl: conn.instanceUrl,
+			accessToken: conn.accessToken
+		};
+
+		const tk = Buffer.from(JSON.stringify(session)).toString('base64');
+
+		// response.redirect(`http://localhost:3000/call-history?tk=${tk}`);
+		response.redirect(`https://react-salescope.herokuapp.com/call-history?tk=${tk}`);
 	});
 });
 
@@ -162,7 +188,8 @@ app.get('/auth/logout', function(request, response) {
 		});
 
 		// Redirect to app main page
-		return response.redirect('/index.html');
+    // return response.redirect('/index.html');
+    return response.redirect('https://react-salescope.herokuapp.com/login');
 	});
 });
 
@@ -170,13 +197,15 @@ app.get('/auth/logout', function(request, response) {
  * Endpoint for retrieving currently connected user
  */
 app.get('/auth/whoami', function(request, response) {
-	const session = getSession(request, response);
+  const session = request.query.session;
 	if (session == null) {
 		return;
 	}
 
+	const ss = Buffer.from(session, 'base64').toString('binary');
+
 	// Request session info from Salesforce
-	const conn = resumeSalesforceConnection(session);
+	const conn = resumeSalesforceConnection(JSON.parse(ss));
 	conn.identity(function(error, res) {
 		response.send(res);
 	});
@@ -210,6 +239,38 @@ app.get('/query', function(request, response) {
 	});
 });
 
+app.post('/query', function(request, response) {
+	const { body } = request;
+	const { session, data, method, url } = body;
+	const saleforceSession = JSON.parse(Buffer.from(session, 'base64').toString('binary'));
+	const { instanceUrl, accessToken } = saleforceSession;
+
+	let requestConfig = {
+		headers: {
+			Authorization: `Bearer ${accessToken}`
+		},
+		method,
+		url: `${instanceUrl}/${url}`
+	};
+
+	if (method.toLowerCase() === 'get') {
+		requestConfig = {
+			...requestConfig,
+			params: data
+		}
+	} else { // to-do need to handle other
+		requestConfig = {
+			...requestConfig,
+			data
+		}
+	}
+
+	axios(requestConfig).then(function(resss) {
+		console.log(resss);
+		response.status(200).send(resss.data);
+	}).catch(err => response.status(500))
+});
+
 app.listen(app.get('port'), function() {
-	// console.log('Server started: https://react-salescope.herokuapp.com:' + app.get('port') + '/');
+	console.log('Server started: http://localhost:' + app.get('port') + '/');
 });

@@ -1,12 +1,18 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+import queryString from 'query-string';
 import Card from '../../components/Card'
 import SearchBox from '../../components/SearchBox'
 import UserHistoryRow from '../../components/UserHistoryRow'
+import {API_URL} from '../../../constants';
 
 import './index.scss'
 
 const CallHistoryPage = () => {
-  const UsersData = ({item}, index) => ( <UserHistoryRow user={item} key={index}/> )
+  const [whoAmI, setWhoAmI] = useState(undefined);
+  const [recentItems, setRecentItems] = useState([]);
+  console.log('WHO AM I', whoAmI);
+  // const UsersData = ({item}, index) => ( <UserHistoryRow user={item} key={index}/> )
 
   const users = [
     {
@@ -60,6 +66,49 @@ const CallHistoryPage = () => {
       }
     }
   ]
+  
+  useEffect(() => {
+    if (typeof whoAmI === 'undefined') {
+      const params = queryString.parseUrl(window.location.href);
+
+      if (typeof params.query.tk !== 'undefined') {
+        sessionStorage.setItem('tk', params.query.tk);
+        window.location.href = params.url;
+      }
+
+      const sessionData = sessionStorage.getItem('tk');
+
+      // TEST CALL QUERY
+      if (typeof sessionData !== 'undefined') {
+        axios.post(`${API_URL}/query`, {
+          data: {},
+          url: 'services/data/v20.0/sobjects/Lead',
+          session: sessionData,
+          method: 'GET'
+        }).then(res => {
+          if(res.data && res.data.recentItems) {
+            setRecentItems(res.data.recentItems)
+            console.log(res.data.recentItems);
+          }
+        });
+      }
+
+      // END TEST
+
+      axios.get(`${API_URL}/auth/whoami`, {
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        params: {
+          session: sessionData
+        }
+      }).then(res => {
+        console.log('YOU GOT THE DATA', res.data);
+        // TODO parse this to redux please
+        setWhoAmI(res.data);
+      }).catch(err => console.log(err));
+    }
+  }, []);
 
   return (
     <div className="scope--wrapper">
@@ -81,7 +130,11 @@ const CallHistoryPage = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  { users.map(UsersData) }
+                  {
+                    recentItems.map((item, index) => {
+                      return <UserHistoryRow item={item} key={index}/>;
+                    })
+                  }
                 </tbody>
               </table>
             </div>
