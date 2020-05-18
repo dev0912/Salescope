@@ -5,10 +5,12 @@ import Card from '../../components/Card'
 import SearchBox from '../../components/SearchBox'
 import UserHistoryRow from '../../components/UserHistoryRow'
 import {API_URL} from '../../../constants';
+import { withRouter } from 'react-router-dom'
 
 import './index.scss'
+import { render } from '@testing-library/react';
 
-const CallHistoryPage = () => {
+const CallHistoryPage = (props) => {
   const [whoAmI, setWhoAmI] = useState(undefined);
   const [recentItems, setRecentItems] = useState([]);
   console.log('WHO AM I', whoAmI);
@@ -109,39 +111,48 @@ const CallHistoryPage = () => {
       }).catch(err => console.log(err));
     }
   }, []);
+  
+  const goDetails = (item_id) => {
+    props.history.push(`/call-history/${item_id}`)
+  }
 
   return (
+    // recentItems.length > 0 &&
+    //   <Redirect to='/scope' />            
+
     <div className="scope--wrapper">
-        <Card>
-          <SearchBox />
-        </Card>
-        <Card>
-          <div className="table--wrapper">
-            <div className="table-container">
-              <table className="table is-fullwidth">
-                <thead>
-                  <tr>
-                    <th><div className="head-cell-wrapper">Name</div></th>
-                    <th><div className="head-cell-wrapper">Persona</div></th>
-                    <th><div className="head-cell-wrapper">Pain Points</div></th>
-                    <th><div className="head-cell-wrapper">Opportunity</div></th>
-                    <th><div className="head-cell-wrapper">Timeline</div></th>
-                    <th><div className="head-cell-wrapper">Tech Stack</div></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {
-                    recentItems.map((item, index) => {
-                      return <UserHistoryRow item={item} key={index}/>;
-                    })
-                  }
-                </tbody>
-              </table>
-            </div>
+      <Card>
+        <SearchBox />
+      </Card>
+      <Card>
+        <div className="table--wrapper">
+          <div className="table-container">
+            <table className="table is-fullwidth">
+              <thead>
+                <tr>
+                  <th><div className="head-cell-wrapper">Name</div></th>
+                  {/* <th><div className="head-cell-wrapper">Persona</div></th>
+                  <th><div className="head-cell-wrapper">Pain Points</div></th>
+                  <th><div className="head-cell-wrapper">Opportunity</div></th>
+                  <th><div className="head-cell-wrapper">Timeline</div></th>
+                  <th><div className="head-cell-wrapper">Tech Stack</div></th> */}
+                </tr>
+              </thead>
+              <tbody>
+                {
+                  recentItems.map((item, index) => {
+                    return <UserHistoryRow item={item} onDetails={goDetails} key={index}/>;
+                  })
+                }
+              </tbody>
+            </table>
           </div>
-        </Card>
+        </div>
+      </Card>
+
+      <div className="head-cell-wrapper" style={{margin: 20, fontSize: 20, fontWeight: 'bold'}}>Selected Details:</div>
     </div>
   )
 }
 
-export default CallHistoryPage
+export default withRouter(CallHistoryPage);

@@ -16,6 +16,7 @@ const Routes = () => (
           <Redirect exact from="/" to="/login" />
           <Route path="/scope" component={ScopePage} />
           <Route path="/login" component={LoginInWithSalseForcePage} />
+          <Route path="/call-history/:id" component={ScopePage} />
           <Route path="/call-history" component={CallHistoryPage} />
           <SettingsPage>
             <Route path="/settings/presets" component={PresetsContainer} />

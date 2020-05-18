@@ -1,21 +1,19 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 
 import RoundCheckBox from './RoundCheckBox'
 import './index.scss'
 
-const CheckItemOption = ({ title }) => {
-	const [status, setStatus] = useState(false)
-
+const CheckItemOption = ({ data, isActive, setActiveValue }) => {
 	function handleStatus() {
-		setStatus(!status)
+		setActiveValue(data.value)
 	}
 
 	return (
-    <button className={classNames('check-item--option', { 'is-checked': status })} onClick={handleStatus}>
-			{ title }
-			{status && (
+    <button className={classNames('check-item--option', { 'is-checked': isActive })} onClick={handleStatus}>
+			{ data.label }
+			{isActive && (
 				<span className="checkmark">
           <RoundCheckBox />
 				</span>
@@ -25,7 +23,8 @@ const CheckItemOption = ({ title }) => {
 }
 
 CheckItemOption.propTypes = {
-	title: PropTypes.string
+	setActiveValue: PropTypes.func,
+	data: PropTypes.object
 }
 
 export default CheckItemOption

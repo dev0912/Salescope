@@ -1,21 +1,29 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 import './index.scss'
 
-const SelectDropDown = ({ lists }) => {
-  const Lists = [
-    "Premium", "Premium 1", "Premium 2", "Premium 3", "Premium 4", "Premium 5"
-  ]
-
+const SelectDropDown = ({ lists, activedVal, setActiveValue }) => {
+  
+  function handleStatus(event) {
+    setActiveValue(event.target.value)
+  }
+  
   return (
     <div className="field select-wrapper">
       <div className="select">
-        <select>
-          { Lists.map((r, index) => (<option key={index}>{r}</option>)) }
+        <select onChange={handleStatus} value={activedVal}>
+          { lists.map((r, index) => (<option key={index} value={r.value}>{r.value}</option>)) }
         </select>
       </div>
     </div>
   )
+}
+
+SelectDropDown.propTypes = {
+  lists: PropTypes.array,
+  activedVal: PropTypes.string,
+  setActiveValue: PropTypes.func
 }
 
 export default SelectDropDown

@@ -159,8 +159,8 @@ app.get('/auth/callback', function(request, response) {
 
 		const tk = Buffer.from(JSON.stringify(session)).toString('base64');
 
-		// response.redirect(`http://localhost:3000/call-history?tk=${tk}`);
-		response.redirect(`https://react-salescope.herokuapp.com/call-history?tk=${tk}`);
+		response.redirect(`http://localhost:3000/call-history?tk=${tk}`);
+		// response.redirect(`https://react-salescope.herokuapp.com/call-history?tk=${tk}`);
 	});
 });
 
@@ -189,7 +189,7 @@ app.get('/auth/logout', function(request, response) {
 
 		// Redirect to app main page
     // return response.redirect('/index.html');
-    return response.redirect('https://react-salescope.herokuapp.com/login');
+    return response.redirect('http://localhost:3000/login');
 	});
 });
 
